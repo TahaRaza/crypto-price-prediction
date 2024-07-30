@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTC Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</head>
+<body>
+    <h1>BTC Price Prediction</h1>
+    <form id="predictForm" method="POST" action="/predict">
+        <label for="symbol">Symbol:</label>
+        <input type="text" id="symbol" name="symbol" value="BTC/USD" required>
+        <button type="submit">Predict</button>
+    </form>
+    <div>
+        <h2>Prediction Results</h2>
+        <img id="actualVsPredictedPlot" src="" alt="Actual vs Predicted Plot">
+    </div>
+    <div>
+        <h2>Future Predictions</h2>
+        <img id="futurePredictionsPlot" src="" alt="Future Predictions Plot">
+    </div>
+    <div>
+        <h2>Metrics</h2>
+        <p id="accuracy"></p>
+        <p id="rmse"></p>
+    </div>
+</body>
+</html>
