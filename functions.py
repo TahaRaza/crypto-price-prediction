@@ -1,4 +1,6 @@
-# functions.py
+import os
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
+
 import numpy as np
 import pandas as pd
 import requests
@@ -8,6 +10,8 @@ from keras.layers import LSTM, Dense
 from keras.optimizers import Adam
 import datetime
 from sklearn.metrics import mean_squared_error
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import io
 import base64
@@ -143,3 +147,16 @@ def generate_plots(actual, predicted, future_predicted, accuracy, rmse, dates, f
 def load_model():
     model = tf.keras.models.load_model('btc_price_prediction_model.h5')
     return model
+
+def save_plots(actual_vs_predicted_plot, future_predictions_plot):
+    with open('actual_vs_predicted_plot.png', 'wb') as f:
+        f.write(base64.b64decode(actual_vs_predicted_plot))
+    with open('future_predictions_plot.png', 'wb') as f:
+        f.write(base64.b64decode(future_predictions_plot))
+
+def load_plots():
+    with open('actual_vs_predicted_plot.png', 'rb') as f:
+        actual_vs_predicted_plot = base64.b64encode(f.read()).decode('utf-8')
+    with open('future_predictions_plot.png', 'rb') as f:
+        future_predictions_plot = base64.b64encode(f.read()).decode('utf-8')
+    return actual_vs_predicted_plot, future_predictions_plot

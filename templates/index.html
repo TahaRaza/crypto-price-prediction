@@ -4,15 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BTC Price Prediction</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
-    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
 </head>
 <body>
     <h1>BTC Price Prediction</h1>
-    <form id="predictForm" method="POST" action="/predict">
+    <form id="predictForm">
         <label for="symbol">Symbol:</label>
         <input type="text" id="symbol" name="symbol" value="BTC/USD" required>
+        <label for="model_option">Model Option:</label>
+        <select id="model_option" name="model_option">
+            <option value="train">Train New Model</option>
+            <option value="use_trained">Use Pretrained Model</option>
+        </select>
         <button type="submit">Predict</button>
     </form>
     <div>
