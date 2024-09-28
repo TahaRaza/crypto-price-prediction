@@ -9,29 +9,35 @@
     <script src="{{ url_for('static', filename='script.js') }}" defer></script>
 </head>
 <body>
-    <h1>BTC Price Prediction</h1>
-    <form id="predictForm">
-        <label for="symbol">Symbol:</label>
-        <input type="text" id="symbol" name="symbol" value="BTC/USD" required>
-        <label for="model_option">Model Option:</label>
-        <select id="model_option" name="model_option">
-            <option value="train">Train New Model</option>
-            <option value="use_trained">Use Pretrained Model</option>
-        </select>
-        <button type="submit">Predict</button>
-    </form>
-    <div>
-        <h2>Prediction Results</h2>
-        <img id="actualVsPredictedPlot" src="" alt="Actual vs Predicted Plot">
-    </div>
-    <div>
-        <h2>Future Predictions</h2>
-        <img id="futurePredictionsPlot" src="" alt="Future Predictions Plot">
-    </div>
-    <div>
-        <h2>Metrics</h2>
-        <p id="accuracy"></p>
-        <p id="rmse"></p>
+    <div class="container">
+        <h1>BTC Price Prediction</h1>
+        <form id="predictForm" class="form-container">
+            <div class="form-group">
+                <label for="symbol">Symbol:</label>
+                <input type="text" id="symbol" name="symbol" value="BTC/USD" required>
+            </div>
+            <div class="form-group">
+                <label for="model_option">Model Option:</label>
+                <select id="model_option" name="model_option">
+                    <option value="train">Train New Model</option>
+                    <option value="use_trained">Use Pretrained Model</option>
+                </select>
+            </div>
+            <button type="submit">Predict</button>
+        </form>
+        <div class="results-container">
+            <h2>Prediction Results</h2>
+            <img id="actualVsPredictedPlot" src="" alt="Actual vs Predicted Plot">
+        </div>
+        <div class="results-container">
+            <h2>Future Predictions</h2>
+            <img id="futurePredictionsPlot" src="" alt="Future Predictions Plot">
+        </div>
+        <div class="metrics-container">
+            <h2>Metrics</h2>
+            <p id="accuracy"></p>
+            <!-- <p id="rmse"></p> -->
+        </div>
     </div>
 </body>
 </html>
